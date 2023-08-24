@@ -1,4 +1,5 @@
 members = []
+posts = {}
 
 
 class Member():
@@ -19,12 +20,15 @@ class Member():
 class Post(Member):
     def __init__(self, title):
         self.title = title
+        posts['title'] = self.title
 
     def content(self, content):
         self.content = content
+        posts['content'] = self.content
 
     def author(self, author):
         self.author = author
+        posts['author'] = self.author
 
 
 member1 = Member(name='JaeYoonLee')
@@ -80,4 +84,4 @@ member3post3.author('Dari')
 
 print(members)
 
-print(type(member3post3))
+print(posts)
