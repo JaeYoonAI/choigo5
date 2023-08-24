@@ -1,87 +1,90 @@
 members = []
-posts = {}
+posts = []
 
 
 class Member():
-    def __init__(self, name):
+    def __init__(self, name, username, password):
         self.name = name
-        members.append(self.name)
-
-    def username(self, username):
         self.username = username
-
-    def password(self, password):
         self.password = password
+
+    def __repr__(self):
+        return f'Your name is {self.name} and your username is {self.username}'
 
     def display(self):
         print(f"name: {self.name}, username: {self.username}")
 
 
 class Post(Member):
-    def __init__(self, title):
+    def __init__(self, title, content, author):
         self.title = title
-        posts['title'] = self.title
-
-    def content(self, content):
         self.content = content
-        posts['content'] = self.content
-
-    def author(self, author):
         self.author = author
-        posts['author'] = self.author
+
+    def __repr__(self):
+        return f'{self.author}\'s post title is {self.title}'
 
 
-member1 = Member(name='JaeYoonLee')
-member1.username('UNIBRo')
-member1.password('sparta')
-member1.display()
+member1 = Member('JaeYoonLee', 'UNIBRo', 'sparta')
+members.append(member1)
+print(members)
 
-member1post1 = Post(title='TIL1')
-member1post1.content('Very Hard Day')
-member1post1.author('UNIBRo')
+member1post1 = Post('TIL1', 'Very Hard Day', member1.username)
+member1post2 = Post('TIL2', 'Wonderful Day!!', member1.username)
+member1post3 = Post('WIL1', 'Camping Time', member1.username)
+posts.append(member1post1)
+posts.append(member1post2)
+posts.append(member1post3)
 
-member1post2 = Post(title='TIL2')
-member1post2.content('Wonderful Day!!')
-member1post2.author('UNIBRo')
+member2 = Member('SeulALee', 'Sara', 'love')
+members.append(member2)
+print(members)
 
-member1post3 = Post(title='WIL1')
-member1post3.content('Camping Time')
-member1post3.author('UNIBRo')
+member2post1 = Post('TIL3', 'Lesson1', member2.username)
+member2post2 = Post('WIL1', 'Vacation', member2.username)
+member2post3 = Post('TIL4', 'Lesson2', member2.username)
+posts.append(member2post1)
+posts.append(member2post2)
+posts.append(member2post3)
 
-member2 = Member(name='SeulALee')
-member2.username('Sara')
-member2.password('love')
-member2.display()
+member3 = Member('Dal', 'Dari', 'byul')
+members.append(member3)
+print(members)
 
-member2post1 = Post(title='TIL3')
-member2post1.content('Lesson1')
-member2post1.author('Sara')
+member3post1 = Post('TIL11', 'Lesson14', member3.username)
+member3post2 = Post('WIL8', 'Happy mothers day', member3.username)
+member3post3 = Post('TIL4', 'Lesson15', member3.username)
+posts.append(member3post1)
+posts.append(member3post2)
+posts.append(member3post3)
 
-member2post2 = Post(title='WIL1')
-member2post2.content('Vacation')
-member2post2.author('Sara')
+for post in posts:
+    if post.author == "Dari":
+        print(post.title)
 
-member2post3 = Post(title='TIL4')
-member2post3.content('Lesson2')
-member2post3.author('Sara')
+certain_word = input('search on contents: ')
+for post in posts:
+    if certain_word in post.content:
+        print(f'title: {post.title}, author: {post.author}')
 
-member3 = Member(name='Dal')
-member3.username('Dari')
-member3.password('byul')
-member3.display()
 
-member3post1 = Post(title='TIL11')
-member3post1.content('Lesson14')
-member3post1.author('Dari')
+def create_user():
+    my_name = input('Please enter your name: ')
+    my_username = input('Please enter your username: ')
+    my_password = input('Please enter your password: ')
 
-member3post2 = Post(title='WIL8')
-member3post2.content('Happy mothers day')
-member3post2.author('Dari')
+    members.append(Member(my_name, my_username, my_password))
 
-member3post3 = Post(title='TIL4')
-member3post3.content('Lesson15')
-member3post3.author('Dari')
 
 print(members)
 
+
+def create_post(my_name):
+    my_title = input('Posting Title: ')
+    my_content = input('Posting Content: ')
+
+    posts.append(Post(my_title, my_content, my_name))
+
+
 print(posts)
+# 해설강의 1:53 부터 다시!!
