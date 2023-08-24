@@ -1,6 +1,6 @@
 import random
 
-rsp = ['Rock', 'Scissors', 'Paper']
+rsp = ['rock', 'scissors', 'paper']
 
 a = input(
     'This is Rock Scissors Paper Game. Do you want to play the game or not? (Y/N): ').lower()
@@ -12,7 +12,14 @@ d = 0
 if a == 'y':
     while True:
         computer = random.choice(rsp).lower()
-        x = input('Choose one (Rock, Scissors, Paper): ').lower()
+        x = input(
+            'Choose one (Rock, Scissors, Paper) or quit the game?(q): ').lower()
+        if x == 'q':
+            break
+        # inserting q position is important!
+        if x not in rsp:
+            print('Wrong Input')
+            continue
         while computer == 'rock':
             if x == 'scissors':
                 print('Lose.')
@@ -23,8 +30,6 @@ if a == 'y':
             if x == computer:
                 print('Draw.')
                 d += 1
-            else:
-                print('Wrong Input')
             break
         while computer == 'paper':
             if x == 'scissors':
@@ -36,8 +41,6 @@ if a == 'y':
             if x == computer:
                 print('Draw.')
                 d += 1
-            else:
-                print('Wrong Input')
             break
         while computer == 'scissors':
             if x == 'paper':
@@ -49,17 +52,8 @@ if a == 'y':
             if x == computer:
                 print('Draw.')
                 d += 1
-            else:
-                print('Wrong Input')
-            break
-        a = input(
-            'Continue? (Y/N): ').lower()
-        if a == 'y':
-            continue
-        if a == 'n':
             break
 
 
-if a == 'n':
-    print('Game Over')
-    print('Win: %d, Lose: %d, Draw: %d' % (w, l, d))
+print('Game Over')
+print(f'Win: {w}, Lose: {l}, Draw: {d}')
